@@ -12,18 +12,17 @@ class TrafficLight
     when 'yellow'
       'Stop'
     when 'stop'
-      working(false)
+      'Good bye and have a nice day'
     else
       'Please input red, green, or yellow as a light'
     end
   end
-
-  def self.working(b = true)
-    b
-  end
 end
 
-while TrafficLight.working
-  answer = cli.ask('Please enter a light (yellow, green, red), or stop, to stop the program', String)
+work = true
+while work
+  answer = cli.ask('Please enter a light (yellow, green, red), or stop, to stop the program',
+                   String)
   puts "#{TrafficLight.command(answer)}"
+  work = false if answer.downcase == 'stop'
 end
